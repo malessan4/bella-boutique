@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { mockProducts } from '../data/mockProduct.ts'; // Importa tus datos de prueba
 import type { Product, CartItem } from '../types/product.ts'; // Importa las interfaces
+import { useCart } from '../context/CardContext.tsx'; // Importa el hook del carrito
 
 const ProductDetailPage: React.FC = () => {
+  const { addToCart } = useCart(); // Hook para manejar el carrito
   const { id } = useParams<{ id: string }>(); // Obtiene el ID de la URL
   const [product, setProduct] = useState<Product | null>(null);
   const [selectedSize, setSelectedSize] = useState<string>('');
@@ -31,6 +33,11 @@ const ProductDetailPage: React.FC = () => {
       alert("Por favor, selecciona una talla y un color.");
       return;
     }
+
+    addToCart(product, quantity, selectedSize, selectedColor);
+    alert(`${quantity}x ${product.name} (${selectedSize}, ${selectedColor}) añadido al carrito.`);
+
+    // Crear el objeto CartItem para el log (opcional)
 
     const item: CartItem = {
       product: product,
