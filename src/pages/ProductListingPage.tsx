@@ -1,4 +1,3 @@
-// src/pages/ProductListingPage.tsx
 import React, { useState, useEffect } from 'react';
 import ProductCard from '../components/ProductCard.tsx'; // Importa tu ProductCard
 import { mockProducts } from '../data/mockProduct.ts'; // Importa tus datos de prueba
