@@ -5,20 +5,12 @@ import type { Product } from '../types/product.ts'; // Importa la interfaz Produ
 
 const ProductListingPage: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
-  const [cart, setCart] = useState<Product[]>([]); // Estado simple para el carrito (temporal)
+  // El estado 'cart' y la función 'handleAddToCart' ya no son necesarios aquí
+  // porque el carrito se gestiona a través del CartContext global.
 
   useEffect(() => {
-    // En una app real, aquí harías una llamada a tu API para obtener los productos.
-    // Por ahora, usamos la mock data.
     setProducts(mockProducts);
   }, []);
-
-  const handleAddToCart = (productToAdd: Product) => {
-    // Lógica simple para añadir al carrito (esto mejorará mucho más adelante)
-    setCart((prevCart) => [...prevCart, productToAdd]);
-    alert(`${productToAdd.name} ha sido añadido al carrito.`);
-    console.log("Carrito actual:", [...cart, productToAdd]);
-  };
 
   return (
     <div className="container mx-auto p-4">
@@ -29,7 +21,7 @@ const ProductListingPage: React.FC = () => {
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {products.map((product) => (
-            <ProductCard key={product.id} product={product} onAddToCart={handleAddToCart} />
+            <ProductCard key={product.id} product={product} />
           ))}
         </div>
       )}
