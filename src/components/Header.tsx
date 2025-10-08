@@ -5,7 +5,7 @@ const Header: React.FC = () => {
   return (
     <header className="bg-pink-600 text-white p-4 shadow-md">
       <nav className="container mx-auto flex justify-between items-center">
-        <Link to="/" className="text-2xl font-bold">Tu Marca</Link>
+        <Link to="/" className="text-2xl font-bold">Bella Boutique</Link>
         <ul className="flex space-x-6">
           <li><Link to="/productos" className="hover:text-pink-200">Productos</Link></li>
           <li><Link to="/carrito" className="hover:text-pink-200">Carrito</Link></li>
